@@ -1,5 +1,7 @@
 # TIC TAC TOE GAME
 
+![alt text](https://github.com/lishatawar/tic-tac-toe/blob/master/public/game.png?raw=true)
+
 ## Installation
 To run this application, download the GitHub zip file or clone the repository. Then open a browsser window and within it open the index.html fine in the directory of your application. 
 
