@@ -1,6 +1,7 @@
 import React from 'react';
 import Board from './Board';
 
+// calcutae matrix winner if number has been same in these three matrix
 function calculateWinner(squares) {
   const lines = [
     [0, 1, 2],
@@ -40,6 +41,13 @@ class Game extends React.Component {
       });
     }
 
+    restartGame(step){
+      this.setState({
+        stepNumber: step,
+        xIsNext: (step % 2) === 0,
+      });
+    }
+
     handleClick(i) {
       const history = this.state.history.slice(0, this.state.stepNumber + 1);
       const current = history[history.length - 1];
@@ -47,7 +55,7 @@ class Game extends React.Component {
       if (calculateWinner(squares) || squares[i]) {
         return;
       }
-      squares[i] = this.state.xIsNext ? 'X' : 'O';
+      squares[i] = this.state.xIsNext ? '🐢' : '🐇';
       this.setState({
         history: history.concat([{
           squares: squares,
@@ -56,36 +64,37 @@ class Game extends React.Component {
         xIsNext: !this.state.xIsNext,
       });
     }
-
+   
     render() {
       const history = this.state.history;
       const current = history[this.state.stepNumber];
+      // console.log('current squares');
+      // console.log(current.squares);
       const winner = calculateWinner(current.squares);
        
       // todo list 
-      const moves = history.map((step, move) => {
-        console.log(move);
-        const desc = move ?
-          'Go to move #' + move :
-          'Go to game start';
-        return (
-          <li>
-            <button key={move} onClick={() => this.jumpTo(move)}>{desc}</button>
-          </li>
-        );
-      });
+      // const moves = history.map((step, move) => {
+      //   const desc = move ?
+      //     'Go to move #' + move :
+      //     'Go to game start';
+      //   return (
+      //     <li>
+      //       <button key={move} onClick={() => this.jumpTo(move)}>{desc}</button>
+      //     </li>
+      //   );
+      // });
 
       // check if we any winner or not
-      let status;
-      if(winner){
-          status = 'Winner '+winner; 
-      }else{
-          status = 'Next player: '+ (this.state.xIsNext ? 'X' : 'O');
-      }
+      // let status;
+      // if(winner){
+      //     status = 'Winner'+winner+'</span>'; 
+      // }else{
+      //     status = 'Next Player: '+ (this.state.xIsNext ? '🐢' : '🐇');
+      // }
       
-      console.log(current);
       return (
         <div className="game">
+          <h2>{ (winner) ? [<span>Winner: {winner}</span>] : ('Next Player: '+ (this.state.xIsNext ? '🐢' : '🐇')) }</h2><br/>
           <div className="game-board">
             <Board
             squares={current.squares}
@@ -93,9 +102,8 @@ class Game extends React.Component {
           />
           </div>
           <div className="game-info">
-            <div>{status}</div>
-            <ol>{moves}</ol>
-          </div>
+            <a href='#' className='game-restart-btn' onClick={ () => this.restartGame(0) }>Restart</a>
+         </div>
         </div>
       );
     }
