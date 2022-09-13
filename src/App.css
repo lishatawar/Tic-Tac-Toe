@@ -31,7 +31,8 @@ body {
   align-items: center;
   justify-content: center;
   border: rgb(189, 74, 113) solid;
-  font-size: 29px;
+  font-size: 30px;
+  font-weight: 700;
   cursor: pointer;
   transition: all ease 0.4s;
   background-color: rgb(223, 209, 214);

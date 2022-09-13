@@ -1,5 +1,6 @@
 {
   "name": "tic-tac-toe",
+  "homepage": "https://lishatawar.github.io/tic-tac-toe",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -10,7 +11,7 @@
     "react-confetti": "^6.1.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+    "react-use": "^17.4.0"
   },
   "scripts": {
     "start": "react-scripts start",

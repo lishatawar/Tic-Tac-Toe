@@ -1,8 +1,6 @@
 import React from 'react';
 import Square from './Square';
 
-
-
 class Board extends React.Component {
     // Initially started class from here
     // define variables and get parents class props by super method

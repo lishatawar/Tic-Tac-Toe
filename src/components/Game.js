@@ -1,6 +1,11 @@
-import React from 'react';
-import Board from './Board';
+import React from 'react'
+import Board from './Board'
+import Confetti from './Confetti';
+// import useWindowSize from "react-use/useWindowSize"
 
+// const { width, height } = useWindowSize();
+
+     
 // calcutae matrix winner if number has been same in these three matrix
 function calculateWinner(squares) {
   const lines = [
@@ -55,7 +60,7 @@ class Game extends React.Component {
       if (calculateWinner(squares) || squares[i]) {
         return;
       }
-      squares[i] = this.state.xIsNext ? '🐢' : '🐇';
+      squares[i] = this.state.xIsNext ? 'X' : 'O';
       this.setState({
         history: history.concat([{
           squares: squares,
@@ -64,14 +69,15 @@ class Game extends React.Component {
         xIsNext: !this.state.xIsNext,
       });
     }
-   
+
+    
     render() {
       const history = this.state.history;
       const current = history[this.state.stepNumber];
       // console.log('current squares');
       // console.log(current.squares);
       const winner = calculateWinner(current.squares);
-       
+      
       // todo list 
       // const moves = history.map((step, move) => {
       //   const desc = move ?
@@ -94,7 +100,7 @@ class Game extends React.Component {
       
       return (
         <div className="game">
-          <h2>{ (winner) ? [<span>Winner: {winner}</span>] : ('Next Player: '+ (this.state.xIsNext ? '🐢' : '🐇')) }</h2><br/>
+          <h2>{ (winner) ? [<span>Winner: {winner}</span>] : ('Next Player: '+ (this.state.xIsNext ? 'X' : 'O')) }</h2><br/>
           <div className="game-board">
             <Board
             squares={current.squares}
@@ -102,8 +108,12 @@ class Game extends React.Component {
           />
           </div>
           <div className="game-info">
-            <a href='#' className='game-restart-btn' onClick={ () => this.restartGame(0) }>Restart</a>
+            <button className='game-restart-btn' onClick={ () => this.restartGame(0) }>Restart</button>
          </div>
+
+         {/* Check if winner have value then confetti will be run */}
+         { winner ? [<Confetti />] : '' }
+
         </div>
       );
     }
