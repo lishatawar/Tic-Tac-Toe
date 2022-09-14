@@ -12,6 +12,7 @@ your_path_name/tic-tac-toe
 Then use this commands: 
 
 **npm install**
+
 **npm start**
 
 You can also play the game by clicking this link: 
