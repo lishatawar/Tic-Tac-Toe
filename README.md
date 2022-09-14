@@ -1,4 +1,4 @@
-# TIC TAC TOE GAME
+<h1 align="center"> TIC TAC TOE GAME </h1>
 
 ![alt text](https://github.com/lishatawar/tic-tac-toe/blob/main/public/gamestart.png?raw=true)
 
