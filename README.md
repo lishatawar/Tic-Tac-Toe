@@ -10,9 +10,10 @@ To run this application, download the GitHub zip file or clone the repository. T
 your_path_name/tic-tac-toe
 
 Then use this commands: 
+
 **npm install**
+
 **npm start**
-Enter
 
 You can also play the game by clicking this link: 
 https://lishatawar.github.io/tic-tac-toe/
